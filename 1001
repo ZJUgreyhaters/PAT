@@ -1,0 +1,35 @@
+#include<stdio.h>
+int main(){
+    int a, b, c, i = 0,j;
+    int tmp[6];
+
+  	scanf("%d%d", &a, &b);
+
+    c = a + b;
+    if(c == 0){
+      printf("0\n");
+      return 0;
+    }
+
+    if(c<0){
+        c = -c;
+        printf("-");
+    }
+
+    while(c!=0){
+        tmp[i] = c % 1000;
+        c = c / 1000;
+        i++;
+    }
+
+    for(j = i - 1;j >= 0;j--){
+        if(tmp[j]<100&& tmp[j]>10 && j < i -1)
+            printf("0");
+        else if(tmp[j]<10&& j < i -1)
+            printf("00");
+        printf("%d",tmp[j]);
+        if(j!=0)
+          printf(",");
+    }
+    return 0;
+}
