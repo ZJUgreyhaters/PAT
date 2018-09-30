@@ -58,6 +58,11 @@ class HuffmanNode implements Comparable<HuffmanNode> {
         if(this.getWeight() > node.getWeight()){
             return 1;
         }else if(this.getWeight() <= node.getWeight()) {
+            // <= 后添加的树放在前面
+            // 4 7 8 11  
+            // 8 11 11
+            //   /\
+            //   4 7
             return -1;
         }
         return 0;
@@ -86,6 +91,7 @@ class HuffmanNode implements Comparable<HuffmanNode> {
         return "Name: " + this.name + ", Code: " + this.code + ", Weight:" + this.weight;
     }
 
+    //合并子树，返回新树，同时更新叶子节点code，效率可能不高，有待优化
     public static HuffmanNode merge(HuffmanNode l, HuffmanNode r){
         HuffmanNode re = new HuffmanNode(l.getWeight() + r.getWeight());
 
@@ -94,20 +100,18 @@ class HuffmanNode implements Comparable<HuffmanNode> {
             re.setRight(r);
             pathCode(re.getLeft(), "0");
             pathCode(re.getRight(), "1");
-//            l.setCode("0" + l.getCode());
-//            r.setCode("1" + r.getCode());
         }else{
+            //权重相同时，将合并的树放到右边
             re.setLeft(r);
             re.setRight(l);
             pathCode(re.getLeft(), "0");
             pathCode(re.getRight(), "1");
-//            l.setCode("1" + l.getCode());
-//            r.setCode("0" + r.getCode());
         }
 
         return re;
     }
 
+    //递归，将节点的哈夫曼编码更新
     public static void pathCode(HuffmanNode root, String code) {
         HuffmanNode left = root.getLeft();
         HuffmanNode right = root.getRight();
