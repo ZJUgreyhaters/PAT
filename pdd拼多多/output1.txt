@@ -1,0 +1,2 @@
+X,Y,Z is in the range [0,A],[0,B],[0,C](0<=Z<=C),max value of X xor Y xor Z ?
+A : B : C : The max value is :15
