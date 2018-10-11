@@ -14,6 +14,8 @@ import java.util.Scanner;
  * sample input: 10101111
  * sample output: 5
  * 最大回文串是：10101
+ * 注意：BitSet 的size() 方法返回的是足够为我们需要使用的空间所分配的空间，不是我们开始初始化时的分配的大小。
+ * 如我们需要使用 50 bit，那么实际分配的是 64 bit
  */
 
 public class PddString {
