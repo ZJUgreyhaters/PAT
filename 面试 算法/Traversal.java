@@ -115,7 +115,7 @@ class TreeNode {
                 node = node.getLeft();  
             } else {  
                 node = stack.pop(); //出栈并访问  
-                System.out.println(node.getData()); 
+                System.out.println(node.getData());
                 node = node.getRight(); 
             }  
         }  
@@ -159,4 +159,13 @@ class TreeNode {
 		}
 	}
 	
+	public static void preOrder(TreeNode root){
+		if(root != null){
+			//System.out.println(root.getData());//preOrder
+			preOrder(root.getLeft());
+			//System.out.println(root.getData());//InOrder
+			preOrder(root.getRight());
+			//System.out.println(root.getData());//postOrder
+		}
+	}
 }
